@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="input-section">
+    <h2>Enter Java Class Code</h2>
+    <textarea [(ngModel)]="javaClassCode" rows="10" cols="50"></textarea>
+    <div>
+      <button (click)="generateSwaggerYaml('model')">Generate Model</button>
+      <button (click)="generateSwaggerYaml('full')">Generate Full YAML</button>
+    </div>
+  </div>
+  <div class="output-section">
+    <h2>Generated Swagger YAML</h2>
+    <pre *ngIf="swaggerYaml">{{ swaggerYaml }}</pre>
+    <button *ngIf="swaggerYaml" (click)="copyToClipboard()">
+      <i class="fas fa-copy"></i> Copy
+    </button>
+    <p *ngIf="!swaggerYaml">No Swagger YAML generated yet.</p>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; 2023 JavaToSwagger. All rights reserved. Contact:
+  <span #copyableEmail class="copyable-email">aasifraza9123@gmail.com</span>
+</div>
