@@ -7,17 +7,27 @@
       <button (click)="generateSwaggerYaml('full')">Generate Full YAML</button>
     </div>
   </div>
-  <div class="output-section">
+
+  <div class="input-section">
     <h2>Generated Swagger YAML</h2>
-    <pre *ngIf="swaggerYaml">{{ swaggerYaml }}</pre>
-    <button *ngIf="swaggerYaml" (click)="copyToClipboard()">
-      <i class="fas fa-copy"></i> Copy
-    </button>
-    <p *ngIf="!swaggerYaml">No Swagger YAML generated yet.</p>
+    <textarea
+      [disabled]="true"
+      [(ngModel)]="swaggerYaml"
+      rows="10"
+      cols="50"
+    ></textarea>
+    <div>
+      <button *ngIf="swaggerYaml" (click)="copyToClipboard()">
+        <i class="fas fa-copy"></i> Copy
+      </button>
+    </div>
   </div>
 </div>
 
 <div class="footer">
   &copy; 2023 JavaToSwagger. All rights reserved. Contact:
-  <span #copyableEmail class="copyable-email">aasifraza9123@gmail.com</span>
+  <span #copyableEmail class="copyable-email"
+    >aasifraza9123@gmail.com
+    <i class="fas fa-copy" style="color: rgb(168, 44, 44); cursor: pointer;" (click)="copyToClipboard(true)"></i></span
+  >
 </div>

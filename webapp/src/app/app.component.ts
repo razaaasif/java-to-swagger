@@ -64,12 +64,11 @@ export class AppComponent {
     this.clipboard.copy(contentToCopy);
     this.message.show();
     this.showCopySnackbar();
-    this.message.show();
   }
   showCopySnackbar() {
     setTimeout(() => {
       this.message.hide();
-    }, 200);
+    }, 2000);
   }
 }
 
