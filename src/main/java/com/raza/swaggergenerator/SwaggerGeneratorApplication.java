@@ -14,10 +14,10 @@ import com.github.javaparser.ast.CompilationUnit;
 @SpringBootApplication
 @RestController
 @CrossOrigin("http://localhost:4200")
-public class SwaggerYamlGeneratorApplication {
+public class SwaggerGeneratorApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SwaggerYamlGeneratorApplication.class, args);
+		SpringApplication.run(SwaggerGeneratorApplication.class, args);
 	}
 
 	@PostMapping("/swagger-yml")

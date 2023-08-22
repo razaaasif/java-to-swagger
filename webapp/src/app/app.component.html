@@ -1,33 +1,56 @@
-<div class="container">
-  <div class="input-section">
-    <h2>Enter Java Class Code</h2>
-    <textarea [(ngModel)]="javaClassCode" rows="10" cols="50"></textarea>
-    <div>
-      <button (click)="generateSwaggerYaml('model')">Generate Model</button>
-      <button (click)="generateSwaggerYaml('full')">Generate Full YAML</button>
+<form [formGroup]="form">
+  <div class="header-content">
+    <h1>Java Code</h1>
+    <h1>Generated Swagger YAML</h1>
+  </div>
+  <div class="containers">
+    <div class="code-container line-numbers">
+      <textarea
+        #textArea
+        class="text-area-code-editor"
+        formControlName="content"
+        spellcheck="false"
+      ></textarea>
+<pre
+  aria-hidden="true"
+  class="pre line-numbers"
+  #pre
+>
+<code [ngClass]="['code', 'language-' + codeType]" #codeContent></code>
+</pre>
+    </div>
+    <div class="code-container">
+      <div>
+        <button
+          class="btn btn-info"
+           (click)="copyToClipboard()"
+        >
+          <i class="fas fa-copy"></i> Copy
+        </button>
+      </div>
+      <pre
+        (click)="copyToClipboard()"
+        aria-hidden="true"
+        class="pre"
+        #pre2
+      ><code class="code language-yaml" #codeContent2></code>
+    </pre>
     </div>
   </div>
-
-  <div class="input-section">
-    <h2>Generated Swagger YAML</h2>
-    <textarea
-      [disabled]="true"
-      [(ngModel)]="swaggerYaml"
-      rows="10"
-      cols="50"
-    ></textarea>
+  <div class="header-content">
     <div>
-      <button *ngIf="swaggerYaml" (click)="copyToClipboard()">
-        <i class="fas fa-copy"></i> Copy
+      <button
+        class="btn btn-primary mx-1"
+        (click)="generateSwaggerYaml('model')"
+      >
+        Generate Model
+      </button>
+      <button
+        class="btn btn-primary mx-1"
+        (click)="generateSwaggerYaml('full')"
+      >
+        Generate Full YAML
       </button>
     </div>
   </div>
-</div>
-
-<div class="footer">
-  &copy; 2023 JavaToSwagger. All rights reserved. Contact:
-  <span #copyableEmail class="copyable-email"
-    >aasifraza9123@gmail.com
-    <i class="fas fa-copy" style="color: rgb(168, 44, 44); cursor: pointer;" (click)="copyToClipboard(true)"></i></span
-  >
-</div>
+</form>

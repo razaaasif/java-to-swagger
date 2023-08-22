@@ -5,8 +5,8 @@ import {
   ApplicationRef,
   Injector,
 } from '@angular/core';
-import { SpinnerComponent } from './spinner.component';
- @Injectable({
+import { SpinnerComponent } from '../component/spinner.component';
+  @Injectable({
    providedIn: 'root',
  })
  export class SpinnerService {

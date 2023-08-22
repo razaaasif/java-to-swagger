@@ -12,8 +12,8 @@
 	<groupId>com.raza</groupId>
 	<artifactId>swagger-yaml-generator</artifactId>
 	<version>1.0</version>
-	<name>swagger-yaml-generator</name>
-	<description>swagger-yaml-generator</description>
+	<name>swagger-generator</name>
+	<description>swagger-generator</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
