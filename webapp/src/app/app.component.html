@@ -11,21 +11,18 @@
         formControlName="content"
         spellcheck="false"
       ></textarea>
-<pre
-  aria-hidden="true"
-  class="pre line-numbers"
-  #pre
->
+      <pre aria-hidden="true" class="pre line-numbers" #pre>
 <code [ngClass]="['code', 'language-' + codeType]" #codeContent></code>
 </pre>
     </div>
     <div class="code-container">
-      <div>
+      <div class="copy-button">
         <button
-          class="btn btn-info"
-           (click)="copyToClipboard()"
+          class="btn btn-outline-secondary"
+          [disabled]="enableCopy"
+          (click)="copyToClipboard()"
         >
-          <i class="fas fa-copy"></i> Copy
+          <i class="fas fa-copy"></i>
         </button>
       </div>
       <pre
@@ -37,15 +34,17 @@
     </pre>
     </div>
   </div>
-  <div class="header-content">
-    <div>
+  <div class="mx-2">
+    <div class="flex-start">
       <button
+        [disabled]="!valueFilled"
         class="btn btn-primary mx-1"
         (click)="generateSwaggerYaml('model')"
       >
         Generate Model
       </button>
       <button
+        [disabled]="!valueFilled"
         class="btn btn-primary mx-1"
         (click)="generateSwaggerYaml('full')"
       >
@@ -54,3 +53,28 @@
     </div>
   </div>
 </form>
+
+<footer
+  style="
+    position: absolute;
+    bottom: 0;
+    right: 40%;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-top-left-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  "
+>
+  <span>&copy; 2023 Copyright:</span>
+  <a style="color: #66ccff; text-decoration: none; margin: 0 5px" href="#"
+    >Swagger Converter</a
+  >
+  <span style="color: #66ccff">|</span>
+  <span
+    style="color: #66ccff; text-decoration: none; margin: 0 5px"
+    
+    >aasifraza9123@gmail.com
+   </span> <i class="fas fa-copy" style="cursor: pointer;" (click)="copyToClipboard(true)"></i
+  >
+</footer>

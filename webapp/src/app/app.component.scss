@@ -68,3 +68,11 @@
   padding: 15px 0 0 70px;
 }
 
+.copy-button {
+      display: flex;
+    justify-content: flex-end;
+    margin-bottom: -40px;
+    z-index: 10000;
+    position: static;
+    margin-right: 1px;
+}

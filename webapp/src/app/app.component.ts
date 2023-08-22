@@ -14,10 +14,12 @@ import { PrismService } from './services/prism.service';
 import { SpinnerService } from './services/spinner.service';
 import { ApiService } from './services/api-service';
 import { Clipboard } from '@angular/cdk/clipboard';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [MessageService],
 })
 export class AppComponent
   implements OnInit, AfterViewChecked, AfterViewInit, OnDestroy
@@ -38,15 +40,15 @@ export class AppComponent
   sub!: Subscription;
   highlighted = false;
   codeType = 'java';
-
+  enableCopy: boolean = true;
   form = this.fb.group({
     content: '',
     swaggerYaml: '',
   });
-
-  // get contentControl() {
-  //   return this.form.get('content');
-  // }
+  valueFilled: boolean = false;
+  get contentControl() {
+    return this.form.get('content');
+  }
 
   get swaggerYamlControl() {
     return this.form.get('swaggerYaml');
@@ -59,7 +61,8 @@ export class AppComponent
     private renderer: Renderer2,
     private spinner: SpinnerService,
     private clipboard: Clipboard,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -84,6 +87,7 @@ export class AppComponent
 
   private listenForm() {
     this.sub = this.form.valueChanges.subscribe((val) => {
+      this.valueFilled = true;
       const modifiedContent = this.prismService.convertHtmlIntoString(
         val.content
       );
@@ -139,7 +143,7 @@ export class AppComponent
           this.swaggerYaml = arrayBufferToString(data);
           console.log(data);
           console.log('data :', JSON.stringify(data));
-
+          this.enableCopy = false;
           this.renderer.setProperty(
             this.codeContent2.nativeElement,
             'innerHTML',
@@ -154,7 +158,13 @@ export class AppComponent
         }
       );
   }
-
+  show() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Message Content',
+    });
+  }
   copyToClipboard(isMail: boolean = false) {
     let copy = this.swaggerYaml;
     const contentToCopy = isMail ? 'aasifraza9123@gmail.com' : copy;
@@ -164,8 +174,35 @@ export class AppComponent
   }
   showCopySnackbar() {
     setTimeout(() => {
-      // this.message.hide();
+      // this.messageService.hide();
     }, 2000);
+  }
+
+  showTopLeft() {
+    this.messageService.add({
+      key: 'tl',
+      severity: 'info',
+      summary: 'Info',
+      detail: 'Message Content',
+    });
+  }
+
+  showTopCenter() {
+    this.messageService.add({
+      key: 'tc',
+      severity: 'warn',
+      summary: 'Warn',
+      detail: 'Message Content',
+    });
+  }
+
+  showBottomCenter() {
+    this.messageService.add({
+      key: 'bc',
+      severity: 'success',
+      summary: 'Success',
+      detail: 'Message Content',
+    });
   }
 }
 
