@@ -5,16 +5,17 @@
     <h1>Generated Swagger YAML</h1>
   </div>
   <div class="containers">
-    <div class="code-container line-numbers">
+    <div class="code-container">
       <textarea
         #textArea
+        style="border: 1px solid #ccc; border-radius: 5px"
         class="text-area-code-editor"
         formControlName="content"
         spellcheck="false"
       ></textarea>
-      <pre aria-hidden="true" class="pre line-numbers" #pre>
+      <!-- <pre aria-hidden="true" class="pre line-numbers" #pre>
 <code [ngClass]="['code', 'language-' + codeType]" #codeContent></code>
-</pre>
+</pre> -->
     </div>
     <div class="code-container">
       <div class="copy-button">
@@ -38,14 +39,14 @@
   <div class="mx-2">
     <div class="flex-start">
       <button
-        [disabled]="textArea.value.length < 1"
+        [disabled]="highlighted"
         class="btn btn-primary mx-1"
         (click)="generateSwaggerYaml('model')"
       >
         Generate Model
       </button>
       <button
-        [disabled]="textArea.value.length < 1"
+        [disabled]="highlighted"
         class="btn btn-primary mx-1"
         (click)="generateSwaggerYaml('full')"
       >
@@ -72,9 +73,12 @@
     >Swagger Converter</a
   >
   <span style="color: #66ccff">|</span>
-  <span
-    style="color: #66ccff; text-decoration: none; margin: 0 5px"
+  <span style="color: #66ccff; text-decoration: none; margin: 0 5px"
     >aasifraza9123@gmail.com
-   </span> <i class="fas fa-copy" style="cursor: pointer;" (click)="copyToClipboard(true)"></i
-  >
+  </span>
+  <i
+    class="fas fa-copy"
+    style="cursor: pointer"
+    (click)="copyToClipboard(true)"
+  ></i>
 </footer>

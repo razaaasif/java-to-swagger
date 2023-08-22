@@ -7,8 +7,9 @@ import { map } from 'rxjs/operators'; // Import the map operator
   providedIn: 'root',
 })
 export class ApiService {
-  // private baseUrl = 'http://localhost:8080'; // Update with your Spring Boot backend URL
-// ${this.baseUrl}
+  private baseUrl =
+    'http://swagger-convertor.ap-south-1.elasticbeanstalk.com'; // Update with your Spring Boot backend URL
+
   constructor(private http: HttpClient) {}
 
   generateSwaggerYaml(
@@ -20,7 +21,7 @@ export class ApiService {
     };
 
     return this.http.post(
-      `/${endpoint}`,
+      `${this.baseUrl}/${endpoint}`,
       javaClassCode,
       { ...options, responseType: 'arraybuffer' as 'text' } // Set responseType for this specific request
     );

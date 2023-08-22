@@ -1,20 +1,19 @@
-
-.header-content{
+.header-content {
   display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.containers{
+.containers {
   display: flex;
-    flex-direction: row;
+  flex-direction: row;
 }
 .code-container {
-    width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    height: 600px;
-    margin: 10px;
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  margin: 10px;
 }
 
 .text-area-code-editor {
@@ -64,15 +63,19 @@
   width: 100%;
   color: transparent;
   background: transparent;
-  z-index: 2;
   padding: 15px 0 0 70px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+   height: 100%;
+          width: 100%;
+          color: rgb(254, 254, 254);
 }
 
 .copy-button {
-      display: flex;
-    justify-content: flex-end;
-    margin-bottom: -40px;
-    z-index: 10000;
-    position: static;
-    margin-right: 1px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: -40px;
+  z-index: 10000;
+  position: static;
+  margin-right: 1px;
 }

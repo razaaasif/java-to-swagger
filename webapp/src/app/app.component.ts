@@ -166,7 +166,7 @@ export class AppComponent
   }
   copyToClipboard(isMail: boolean = false) {
     if (!isMail && this.swaggerYaml.length < 1 ) { 
-      return;
+      return ;
     }
     this.showMessage();
     let copy = this.swaggerYaml;

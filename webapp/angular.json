@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-prism": {
+    "swagger-convertor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-prism",
+            "outputPath": "dist/swagger-convertor",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -81,10 +81,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-prism:build:production"
+              "browserTarget": "swagger-convertor:build:production"
             },
             "development": {
-              "browserTarget": "angular-prism:build:development"
+              "browserTarget": "swagger-convertor:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +92,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-prism:build"
+            "browserTarget": "swagger-convertor:build"
           }
         },
         "test": {
@@ -116,5 +116,5 @@
       }
     }
   },
-  "defaultProject": "angular-prism"
+  "defaultProject": "swagger-convertor"
 }
