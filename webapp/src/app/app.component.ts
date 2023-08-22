@@ -62,7 +62,7 @@ export class AppComponent
     private spinner: SpinnerService,
     private clipboard: Clipboard,
     private apiService: ApiService,
-    private messageService: MessageService
+    private message: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -97,7 +97,7 @@ export class AppComponent
         'innerHTML',
         modifiedContent
       );
-
+      this.enableCopy = true;
       this.swaggerYaml = '';
       this.highlighted = true;
     });
@@ -158,51 +158,20 @@ export class AppComponent
         }
       );
   }
-  show() {
-    this.messageService.add({
+  showMessage(): void {
+    this.message.add({
+      summary: 'Copied successfully.',
       severity: 'success',
-      summary: 'Success',
-      detail: 'Message Content',
     });
   }
   copyToClipboard(isMail: boolean = false) {
+    if (!isMail && this.swaggerYaml.length < 1 ) { 
+      return;
+    }
+    this.showMessage();
     let copy = this.swaggerYaml;
     const contentToCopy = isMail ? 'aasifraza9123@gmail.com' : copy;
-    // this.message.show();
     this.clipboard.copy(contentToCopy);
-    this.showCopySnackbar();
-  }
-  showCopySnackbar() {
-    setTimeout(() => {
-      // this.messageService.hide();
-    }, 2000);
-  }
-
-  showTopLeft() {
-    this.messageService.add({
-      key: 'tl',
-      severity: 'info',
-      summary: 'Info',
-      detail: 'Message Content',
-    });
-  }
-
-  showTopCenter() {
-    this.messageService.add({
-      key: 'tc',
-      severity: 'warn',
-      summary: 'Warn',
-      detail: 'Message Content',
-    });
-  }
-
-  showBottomCenter() {
-    this.messageService.add({
-      key: 'bc',
-      severity: 'success',
-      summary: 'Success',
-      detail: 'Message Content',
-    });
   }
 }
 
