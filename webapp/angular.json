@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "swagger-convertor": {
+    "webapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/swagger-convertor",
+            "outputPath": "dist/webapp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,18 +31,21 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+               {
+                 "glob": "**/*",
+                 "input": "node_modules/monaco-editor",
+                 "output": "assets/monaco-editor/"
+               }
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css",
-              "node_modules/primeicons/primeicons.css"            ],
-            "scripts": [
-             
-            ]
+               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -81,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "swagger-convertor:build:production"
+              "browserTarget": "webapp:build:production"
             },
             "development": {
-              "browserTarget": "swagger-convertor:build:development"
+              "browserTarget": "webapp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -92,7 +95,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "swagger-convertor:build"
+            "browserTarget": "webapp:build"
           }
         },
         "test": {
@@ -116,5 +119,5 @@
       }
     }
   },
-  "defaultProject": "swagger-convertor"
+  "defaultProject": "webapp"
 }

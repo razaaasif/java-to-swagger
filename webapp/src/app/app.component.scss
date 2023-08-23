@@ -1,81 +1,72 @@
-.header-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+:host {
+  flex-direction: column;
 }
-.containers {
-  display: flex;
-  flex-direction: row;
+
+.editor-container {
+  height: 300px;
+  margin: 20px;
 }
-.code-container {
-  width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  height: 600px;
+
+mat-toolbar {
+  h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  h2 {
+    font-size: 15px;
+  }
+}
+
+h2 {
+  text-align: center;
+  margin: 30px;
+}
+
+h3 {
+  text-align: center;
+  color: #2196f3;
   margin: 10px;
 }
-
-.text-area-code-editor {
-  &,
-  &:focus {
-    box-shadow: none;
-    outline: 0;
-    border: 0;
-  }
+mat-form-field {
+  margin: 15px;
 }
-
-.text-area-code-editor,
-.pre,
-.code {
-  tab-size: 4;
-  margin: 0;
+mat-card {
   padding: 0;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 1em;
-  line-height: 1.5;
+  margin: 15px;
+  height: auto;
 }
-
-.pre {
-  height: 100%;
-  min-height: inherit;
-  z-index: 1;
-  overflow: auto;
-  padding: 15px 0 0 70px;
-
-  .code {
-    min-height: inherit;
-    overflow: hidden;
-    height: 100%;
+.basic-examples {
+  min-height: 300px;
+  > div {
+    min-width: 300px;
+    min-height: 300px;
   }
 }
 
-.text-area-code-editor {
-  caret-color: rgb(255, 255, 255);
-  white-space: nowrap;
-  overflow: auto;
-  text-align: left;
-  display: block;
-  resize: none;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  color: transparent;
-  background: transparent;
-  padding: 15px 0 0 70px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-   height: 100%;
-          width: 100%;
-          color: rgb(254, 254, 254);
+.form-infos {
+  margin: 0 15px;
+  h4 {
+    margin: 10px 0;
+  }
+  .form-info {
+    margin-bottom: 10px;
+    span:last-child {
+      font-weight: bold;
+    }
+  }
+  pre {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #eeee;
+    padding: 10px;
+  }
 }
-
-.copy-button {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: -40px;
-  z-index: 10000;
-  position: static;
-  margin-right: 1px;
+.main{
+  margin:2rem;
+      display: flex;
+    justify-content: space-between;
+}
+.text-area{
+  width:49.9%;
+  height:700px;
 }

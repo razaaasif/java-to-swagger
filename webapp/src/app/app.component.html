@@ -1,84 +1,26 @@
-<p-toast position="top-right"></p-toast>
-<form [formGroup]="form">
-  <div class="header-content">
-    <h1>Java Code</h1>
-    <h1>Generated Swagger YAML</h1>
-  </div>
-  <div class="containers">
-    <div class="code-container">
-      <textarea
-        #textArea
-        style="border: 1px solid #ccc; border-radius: 5px"
-        class="text-area-code-editor"
-        formControlName="content"
-        spellcheck="false"
-      ></textarea>
-      <!-- <pre aria-hidden="true" class="pre line-numbers" #pre>
-<code [ngClass]="['code', 'language-' + codeType]" #codeContent></code>
-</pre> -->
-    </div>
-    <div class="code-container">
-      <div class="copy-button">
-        <button
-          class="btn btn-outline-secondary"
-          [disabled]="enableCopy"
-          (click)="copyToClipboard()"
-        >
-          <i class="fas fa-copy"></i>
-        </button>
-      </div>
-      <pre
-        (click)="copyToClipboard()"
-        aria-hidden="true"
-        class="pre"
-        #pre2
-      ><code class="code language-yaml" #codeContent2></code>
-    </pre>
-    </div>
-  </div>
-  <div class="mx-2">
-    <div class="flex-start">
-      <button
-        [disabled]="highlighted"
-        class="btn btn-primary mx-1"
-        (click)="generateSwaggerYaml('model')"
-      >
-        Generate Model
-      </button>
-      <button
-        [disabled]="highlighted"
-        class="btn btn-primary mx-1"
-        (click)="generateSwaggerYaml('full')"
-      >
-        Generate Full YAML
-      </button>
-    </div>
-  </div>
-</form>
 
-<footer
-  style="
-    position: absolute;
-    bottom: 0;
-    right: 40%;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-top-left-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  "
->
-  <span>&copy; 2023 Copyright:</span>
-  <a style="color: #66ccff; text-decoration: none; margin: 0 5px" href="#"
-    >Swagger Converter</a
+<div class="main" fxLayout="row" >
+  <div  class="text-area">
+ <ngx-monaco-editor
+    fxFlexI
+    [options]="editorOptionsInput"
+    [(ngModel)]="input"
+    (init)="editorInit($event)"
   >
-  <span style="color: #66ccff">|</span>
-  <span style="color: #66ccff; text-decoration: none; margin: 0 5px"
-    >aasifraza9123@gmail.com
-  </span>
-  <i
-    class="fas fa-copy"
-    style="cursor: pointer"
-    (click)="copyToClipboard(true)"
-  ></i>
-</footer>
+  </ngx-monaco-editor>
+ 
+  </div>
+  <div  class="text-area">
+ 
+  <ngx-monaco-editor
+    fxFlexO
+    [options]="editorOptionsOutput"
+    [(ngModel)]="output"
+    (init)="editorInit($event)"
+  >
+  </ngx-monaco-editor>
+  </div>
+ 
+</div>
+
+<div></div>
