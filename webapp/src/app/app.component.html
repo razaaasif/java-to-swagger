@@ -1,26 +1,31 @@
 
-<div class="main" fxLayout="row" >
-  <div  class="text-area">
- <ngx-monaco-editor
-    fxFlexI
-    [options]="editorOptionsInput"
-    [(ngModel)]="input"
-    (init)="editorInit($event)"
-  >
-  </ngx-monaco-editor>
- 
-  </div>
-  <div  class="text-area">
- 
-  <ngx-monaco-editor
-    fxFlexO
-    [options]="editorOptionsOutput"
-    [(ngModel)]="output"
-    (init)="editorInit($event)"
-  >
-  </ngx-monaco-editor>
-  </div>
- 
-</div>
+  <div class="flex-row bg-dark">
+    <h1 class="text-primary text-center" style="width: 50%;">Java Code</h1>
+    <h1 class="text-success text-center" style="width: 45%;">YML Code</h1>
+    <button class="btn btn-outline-secondary" [disabled]="enableCopy" (click)="copyToClipboard()">
+      <i class="fas fa-copy"></i>&nbsp;Copy
+    </button>
 
-<div></div>
+  </div>
+  <div class="main" fxLayout="row">
+    <div class="text-area">
+      <ngx-monaco-editor fxFlexI [options]="editorOptionsInput" [(ngModel)]="input" (init)="editorInit($event)"
+        (ngModelChange)="onChange()"></ngx-monaco-editor>
+    </div>
+    <div class="text-area">
+
+      <ngx-monaco-editor fxFlexO [options]="editorOptionsOutput" [(ngModel)]="output" (init)="editorInit($event)">
+      </ngx-monaco-editor>
+    </div>
+  </div>
+
+  <div class="m-1">
+    <button [disabled]="!valid" class="btn btn-primary m-1" (click)="convert('swaggermodel')">Generate Model</button>
+    <button [disabled]="!valid" class="btn btn-primary m-1" (click)="convert('swagger-yml')">Generate Full Yaml</button>
+  </div>
+
+<div class="footer text-info">
+  &copy; 2023 JavaToSwagger. All rights reserved. Contact:
+  <span class="email text-primary">aasifraza9123@gmail.com</span>
+  <i class="fas fa-copy mx-1" style="cursor: pointer;"></i>
+</div>

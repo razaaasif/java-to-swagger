@@ -1,5 +1,5 @@
 {
-  "name": "webapp",
+  "name": "java-to-swagger",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
