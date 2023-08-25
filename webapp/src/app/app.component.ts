@@ -4,9 +4,9 @@ import {
   MonacoEditorComponent,
   MonacoEditorConstructionOptions,
   MonacoEditorLoaderService,
-  MonacoStandaloneCodeEditor
+  MonacoStandaloneCodeEditor,
 } from '@materia-ui/ngx-monaco-editor';
- import { ApiService } from './services/api-service';
+import { ApiService } from './services/api-service';
 import { SpinnerService } from './services/spinner.service';
 import { MessageService } from 'primeng/api';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -94,7 +94,7 @@ export class AppComponent {
       return;
     }
 
-    this.apiService.generateSwaggerYaml(this.input ,path).subscribe((ouput) => {
+    this.apiService.generateSwaggerYaml(this.input, path).subscribe((ouput) => {
       this.spinner.show();
       this.output = arrayBufferToString(ouput);
       this.spinner.hide();
@@ -107,11 +107,10 @@ export class AppComponent {
   copyToClipboard(isMail: boolean = false) {
     const contentToCopy = isMail ? 'aasifraza9123@gmail.com' : this.output;
     this.clipboard.copy(contentToCopy);
-        this.message.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: 'Message Content',
-        });
+    this.message.add({
+      severity: 'success',
+      summary: 'Copied',
+    });
   }
 }
 function arrayBufferToString(buffer: ArrayBuffer): string {
